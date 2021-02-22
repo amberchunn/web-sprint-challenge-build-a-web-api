@@ -44,31 +44,31 @@ A _"test"_ script already exists you can use to run tests against your code.
 
 #### Build an API
 
-- [ ] Inside `api/actions/actions-router.js` build endpoints for performing CRUD operations on _actions_:
-  - `[GET] /api/actions` returns an array of actions (or an empty array) as the body of the _response_.
-  - `[GET] /api/actions/:id` returns an action with the given `id` as the body of the _response_.
-  - `[POST] /api/actions` returns the newly created action as the body of the _response_.
-  - `[PUT] /api/actions/:id` returns the updated action as the body of the _response_.
-  - `[DELETE] /api/actions/:id` returns no _response_ body.
+- [x] Inside `api/actions/actions-router.js` build endpoints for performing CRUD operations on _actions_:
+  [x] `[GET] /api/actions` returns an array of actions (or an empty array) as the body of the _response_.
+  [x] `[GET] /api/actions/:id` returns an action with the given `id` as the body of the _response_.
+  [x] `[POST] /api/actions` returns the newly created action as the body of the _response_.
+  [x] `[PUT] /api/actions/:id` returns the updated action as the body of the _response_.
+  [x] `[DELETE] /api/actions/:id` returns no _response_ body.
 
-- [ ] Inside `api/projects/projects-router.js` build endpoints for performing CRUD operations on _projects_:
-  - `[GET] /api/projects` returns an array of projects (or an empty array) as the body of the response.
-  - `[GET] /api/projects/:id` returns a project with the given `id` as the body of the _response_.
-  - `[POST] /api/projects` returns the newly created project as the body of the _response_.
-  - `[PUT] /api/projects/:id` returns the updated project as the body of the _response_.
-  - `[DELETE] /api/projects/:id` returns no _response_ body.
+- [x] Inside `api/projects/projects-router.js` build endpoints for performing CRUD operations on _projects_:
+  [x] `[GET] /api/projects` returns an array of projects (or an empty array) as the body of the response.
+  [x] `[GET] /api/projects/:id` returns a project with the given `id` as the body of the _response_.
+  [x] `[POST] /api/projects` returns the newly created project as the body of the _response_.
+  [x] `[PUT] /api/projects/:id` returns the updated project as the body of the _response_.
+  [x] `[DELETE] /api/projects/:id` returns no _response_ body.
 
-- [ ] Inside `api/projects/projects-router.js` add an endpoint for retrieving the list of actions for a project:
-  - `[GET] /api/projects/:id/actions` sends an array of actions (or an empty array) as the body of the response.
+- [x] Inside `api/projects/projects-router.js` add an endpoint for retrieving the list of actions for a project:
+  [x] `[GET] /api/projects/:id/actions` sends an array of actions (or an empty array) as the body of the response.
 
-- Both Projects and Actions have an optional `completed` property (see Database Schemas below). In both cases it's a boolean stored in the database as a 1 or a 0. Make sure to transform the raw `completed` values obtained from the db to `true` or `false`, before sending them back to the client.
-- When adding an action, make sure the `project_id` provided belongs to an existing `project`.
-- If you try to add an action with an `id` of 3 and there is no project with that `id` the database will return an error.
-- Use an HTTP client like `HTTPie`, `Postman` or `Insomnia` to test the API's endpoints.
-- Use Express Routers to organize your endpoints.
-- The use of middlewares to avoid repetitive code is highly recommended.
-- Your `server.js` file lives inside the `api` folder.
-- Your `index.js` file lives at the root of the project.
+[x] Both Projects and Actions have an optional `completed` property (see Database Schemas below). In both cases it's a boolean stored in the database as a 1 or a 0. Make sure to transform the raw `completed` values obtained from the db to `true` or `false`, before sending them back to the client.
+[x] When adding an action, make sure the `project_id` provided belongs to an existing `project`.
+[x] If you try to add an action with an `id` of 3 and there is no project with that `id` the database will return an error.
+[x] Use an HTTP client like `HTTPie`, `Postman` or `Insomnia` to test the API's endpoints.
+[x] Use Express Routers to organize your endpoints.
+[x] The use of middlewares to avoid repetitive code is highly recommended.
+[x] Your `server.js` file lives inside the `api` folder.
+[x] Your `index.js` file lives at the root of the project.
 
 ### Database Schemas
 

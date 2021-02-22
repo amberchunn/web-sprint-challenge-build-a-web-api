@@ -12,3 +12,9 @@ I need this code, but don't know where, perhaps should make some middleware, don
 
 Go code!
 */
+// Server & ENV
+const server = require('./api/server');
+
+server.listen(3000, () => {
+	console.log(`Server listening at http://localhost:3000`)
+})
