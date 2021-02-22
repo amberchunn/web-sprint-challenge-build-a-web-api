@@ -1,7 +1,7 @@
 // Write your "actions" router here!
 const express = require('express');
 const actions = require('../actions/actions-model');
-const { validateAction, validateActionId, validateProjectId} = require('../middleware');
+const { validateAction, validateActionId} = require('../middleware');
 const router = express.Router();
 
 const apiRoot = process.env.API_ROOT;
