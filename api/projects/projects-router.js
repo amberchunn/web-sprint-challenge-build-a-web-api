@@ -1,6 +1,7 @@
 // Write your "projects" router here!
 const express = require('express');
 const projects = require('../projects/projects-model');
+const { validateProject, validateProjectId} = require('../middleware');
 
 const router = express.Router();
 
@@ -18,7 +19,7 @@ router.get(`/${apiRoot}/projects`, async (req, res, next) => {
 })
 
 // Get Specific Project
-router.get(`/${apiRoot}/projects/:id`, async (req, res, next) => {
+router.get(`/${apiRoot}/projects/:id`, validateProjectId(), async (req, res, next) => {
     try {
         const data = await projects.get(req.params.id);
         res.status(200).json(data);
@@ -28,7 +29,7 @@ router.get(`/${apiRoot}/projects/:id`, async (req, res, next) => {
 })
 
 // Get a Project's Actions
-router.get(`/${apiRoot}/projects/:id/actions`, async (req, res, next) => {
+router.get(`/${apiRoot}/projects/:id/actions`, validateProjectId(), async (req, res, next) => {
     try {
         const data = await projects.getProjectActions(req.params.id);
         res.status(200).json(data);
@@ -38,7 +39,7 @@ router.get(`/${apiRoot}/projects/:id/actions`, async (req, res, next) => {
 })
 
 // Add New Project
-router.post(`/${apiRoot}/projects`, async (req, res, next) => {
+router.post(`/${apiRoot}/projects`, validateProject(), async (req, res, next) => {
     try {
         const data = await projects.insert(req.body);
         res.status(201).json(data);
@@ -48,7 +49,7 @@ router.post(`/${apiRoot}/projects`, async (req, res, next) => {
 })
 
 // Update Project
-router.put(`/${apiRoot}/projects/:id`, async (req, res, next) => {
+router.put(`/${apiRoot}/projects/:id`, validateProjectId(), validateProject(), async (req, res, next) => {
     try {
         const data = await projects.update(req.params.id, req.body);
         res.status(200).json(data);
@@ -58,7 +59,7 @@ router.put(`/${apiRoot}/projects/:id`, async (req, res, next) => {
 })
 
 // Delete Project
-router.delete(`/${apiRoot}/projects/:id`, async (req, res, next) => {
+router.delete(`/${apiRoot}/projects/:id`, validateProjectId(), async (req, res, next) => {
     try {
         await projects.remove(req.params.id);
         res.status(204).end();

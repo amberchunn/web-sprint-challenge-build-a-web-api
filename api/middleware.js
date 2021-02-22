@@ -25,7 +25,7 @@ function validateProjectId() {
                     req.action = project;
                     next();
                   } else {
-                      res.status(404).json({message: "Action not found"});
+                      res.status(404).json({message: "Project not found"});
                   }
           } catch (err) {
               next(err);

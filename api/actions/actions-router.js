@@ -1,7 +1,7 @@
 // Write your "actions" router here!
 const express = require('express');
 const actions = require('../actions/actions-model');
-const { validateProjectId } = require('../middleware');
+const { validateAction, validateActionId, validateProjectId} = require('../middleware');
 const router = express.Router();
 
 const apiRoot = process.env.API_ROOT;
@@ -17,7 +17,7 @@ router.get(`/${apiRoot}/actions`, async (req, res, next) => {
 })
 
 // Get Specific Action
-router.get(`/${apiRoot}/actions/:id`, async (req, res, next) => {
+router.get(`/${apiRoot}/actions/:id`, validateActionId(), async (req, res, next) => {
     try {
         const data = await actions.get(req.params.id);
         res.status(200).json(data);
@@ -27,7 +27,7 @@ router.get(`/${apiRoot}/actions/:id`, async (req, res, next) => {
 })
 
 // Post New Action
-router.post(`/${apiRoot}/actions`, validateProjectId(), async (req, res, next) => {
+router.post(`/${apiRoot}/actions`, validateAction(), async (req, res, next) => {
     try {
         const data = await actions.insert(req.body);
         res.status(201).json(data);
@@ -37,7 +37,7 @@ router.post(`/${apiRoot}/actions`, validateProjectId(), async (req, res, next) =
 })
 
 // Update Existing Action
-router.put(`/${apiRoot}/actions/:id`, async (req, res, next) => {
+router.put(`/${apiRoot}/actions/:id`, validateActionId(), validateAction(), async (req, res, next) => {
     try {
         const data = await actions.update(req.params.id, req.body);
         res.status(200).json(data);
@@ -47,7 +47,7 @@ router.put(`/${apiRoot}/actions/:id`, async (req, res, next) => {
 })
 
 // Delete Action
-router.delete(`/${apiRoot}/actions/:id`, async (req, res, next) => {
+router.delete(`/${apiRoot}/actions/:id`, validateActionId(), async (req, res, next) => {
     try {
         await actions.remove(req.params.id);
         res.status(204).end();
