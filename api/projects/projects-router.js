@@ -4,7 +4,7 @@ const projects = require('../projects/projects-model');
 
 const router = express.Router();
 
-const apiRoot = 'api';
+const apiRoot = process.env.API_ROOT;
 
 
 // Get All Projects

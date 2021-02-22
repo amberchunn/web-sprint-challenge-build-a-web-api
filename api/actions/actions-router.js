@@ -4,7 +4,7 @@ const actions = require('../actions/actions-model');
 const { validateProjectId } = require('../middleware');
 const router = express.Router();
 
-const apiRoot = 'api';
+const apiRoot = process.env.API_ROOT;
 
 // Get All Actions
 router.get(`/${apiRoot}/actions`, async (req, res, next) => {
